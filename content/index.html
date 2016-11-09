@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Christmas_Hangman</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--Bootstrap reference here
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700"> -->
+</head>
+
+<body>
+    <!-- I need the user to pick a letter.
+I need to capture those choices.
+I need to compare the choices and determine if it belongs to the hidden word.
+I need to display the result of the user. -->
+    <div id="Hangman Game">
+    </div>
+
+    <script type="text/javascript">
+    var word_options = ["Grinch ", "ornament ", "Frosty ", "reindeer "]; //Insert a file later with the 13 total words   
+    var secret_word = word_options[Math.floor(Math.random() * word_options.length)]; //chooses a random secret word from array
+    console.log(secret_word);
+
+    var secret_word_dashed = secret_word.replace(/[a-zA-Z]/g, '-'); //substituting each char of secret word
+    // console.log(secrete_word_dashed);
+
+
+
+    document.onkeyup = function(event) {
+        var userGuess = String.fromCharCode(event.keyCode).toLowercase(); //logs into userGuess
+        console.log(userGuess);
+        // guesses_remaining = //log this in at the end
+            console.log(guesses_remaining);
+
+
+        stored_guesses.push(userGuess); //pushes user's guess into stored guesses array
+        if (secret_word.indexOf(userGuess) !== -1) {
+            // guess was found
+        } else if (secret_word.indexOf(userGuess) == 0 - 5) {
+            alert("Try Again! ");
+        }
+        //guess was not found
+
+        for (var i = 0; i < secret_word_dashed.length; i++) {
+            if (secret_word[i] == userGuess) {
+                console.log(stored_guesses + i);
+
+                secret_word_dashed = secret_word_dashed.substring(0, 1) + userGuess + secret_word_dashed.substring(i + 1);
+                console.log(secret_word_dashed);
+                if (secret_word == secret_word_dashed) {
+
+                }
+
+            }
+        }
+      }
+
+    var html = "<h1>This is javascript</h1>" + secret_word_dashed;
+    document.querySelector("#test").innerHTML = html;
+        // document.querySelector(".secret-word-dashed").innerHTML = secret_word_dashed; //rewrites dashed secret word to site
+
+    /* var stored_guesses=[]; var stored_guesses=[]; var guesses_remaining=10; // to fix later as the game progresses */
+    </script>
+</body>
+
+</html>
