@@ -42,25 +42,25 @@ function startGame() {
     document.getElementById('wrongGuesses').innerHTML = wrongGuesses.join(" ");
 }
 
-function checkLetters(Letter) {
+function checkLetters(letterGuessed) {
 
     var letterInWord = false;
 
     for (var i=0; i<numBlanks; i++) {
-        if (chosenWord[i] == letter) {
+        if (chosenWord[i] == letterGuessed) {
             letterInWord = true;
         }
     }
 
     if (letterInWord) {
         for (var i=0; i<numBlanks; i++) {
-            if(chosenWord[i] == letter) {
-                blanksAndCorrects[i] = letter;
+            if(chosenWord[i] == letterGuessed) {
+                blanksAndCorrects[i] = letterGuessed;
             }
         }
         console.log(blanksAndCorrects);
     } else {
-        wrongGuesses.push(letter);
+        wrongGuesses.push(letterGuessed);
         numGuesses--;
     }
 }
